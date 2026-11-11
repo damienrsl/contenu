@@ -1,0 +1,8 @@
+<!doctype html><html lang="fr"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><title>Contenu</title>
+<style>body{margin:0;height:100vh;display:grid;place-items:center;background:#0d1680;color:#fff;font:600 18px -apple-system,system-ui,sans-serif}p{opacity:.8}</style></head>
+<body><div style="text-align:center"><div style="font-size:28px">Contenu</div><p id="m">Ouverture…</p></div>
+<script>
+const go=u=>{u=(u||'').trim();if(/^https:\/\/[a-z0-9-]+\.trycloudflare\.com$/.test(u)){location.replace(u+location.hash)}else{document.getElementById('m').textContent="L'app redémarre, réessaie dans 2 minutes."}};
+fetch('https://api.github.com/repos/damienrsl/contenu/contents/url.txt?t='+Date.now(),{headers:{Accept:'application/vnd.github.raw'}}).then(r=>{if(!r.ok)throw 0;return r.text()}).then(go)
+.catch(()=>fetch('url.txt?t='+Date.now()).then(r=>r.text()).then(go).catch(()=>go('')));
+</script></body></html>
